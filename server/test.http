@@ -1,0 +1,28 @@
+GET http://127.0.0.1:3000/cars
+###
+PATCH http://127.0.0.1:3000/cars/12
+Content-Type: application/json
+
+{
+    "title":"Filip war hier",
+    "status":"sold"
+}
+###
+DELETE http://127.0.0.1:3000/cars/33
+###
+POST http://127.0.0.1:3000/cars
+Content-Type: application/json
+
+{
+"title": "Rare Oldtimer",
+"status": "available",
+"price": "52300",
+"image": "http://localhost:3000/images/car10.png",
+"miles": 189921,
+"yearOfMake": 1978,
+"owner": {
+"firstName": "test",
+"lastName": "test"
+},
+"description": "Excellent condition. A trip back in time!"
+}
