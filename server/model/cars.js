@@ -1,7 +1,23 @@
 const db = require('../db/index');
 
 async function getCars() {
-  const { rows } = await db.query('SELECT * from cars;');
+  const { rows } = await db.query('select * from cars join owner o on cars.owner = o.id');
+  return {
+    data: rows,
+    code: 200,
+  };
+}
+
+async function getCar(id) {
+  const { rows } = await db.query('SELECT * from cars join owner o on cars.owner = o.id where cars.id = $1 ', [
+    id,
+  ]);
+  if (rows.length === 0) {
+    return {
+      data: `Car with the id ${id} was not found.`,
+      code: 404,
+    };
+  }
   return {
     data: rows,
     code: 200,
@@ -86,4 +102,4 @@ async function addCar(c) {
   }
 }
 
-module.exports = { getCars, changeStatusCar, deleteCar, addCar };
+module.exports = { getCars, changeStatusCar, deleteCar, addCar, getCar };

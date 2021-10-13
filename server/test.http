@@ -1,5 +1,7 @@
 GET http://127.0.0.1:3000/cars
 ###
+GET http://127.0.0.1:3000/cars/2
+###
 PATCH http://127.0.0.1:3000/cars/12
 Content-Type: application/json
 

@@ -5,10 +5,10 @@
     <v-card-title>{{ c.title }} <span v-if="c.status != 'available'"> *RESERVED</span></v-card-title>
     <div class="mx-4">
       <p>
-        Owner: <b>{{ c.owner.firstName }} {{ c.owner.lastName }}</b>
+        Owner: <b>{{ c.first_name }} {{ c.last_name }}</b>
       </p>
       <span>
-        Year: <b>{{ c.yearOfMake }}</b>
+        Year: <b>{{ c.year_of_make }}</b>
       </span>
       <br />
       <span>
@@ -23,6 +23,9 @@
     </div>
 
     <v-card-actions class="mb-3 d-flex justify-end" v-if="c.status === 'available'">
+      <v-btn class="red" color="white--text">
+        Delete
+      </v-btn>
       <v-btn class="purple" color="white--text" :to="`/details/${c.id}`">
         Details
       </v-btn>

@@ -6,6 +6,11 @@ const getCars = asyncHandler(async (req, res) => {
   res.status(code).json(data);
 });
 
+const getCar = asyncHandler(async (req, res) => {
+  const { code, data } = await carFunction.getCar(req.params.id);
+  res.status(code).json(data);
+});
+
 const changeStatusCar = asyncHandler(async (req, res) => {
   const { code, data } = await carFunction.changeStatusCar(req.params.id, req.body);
   res.status(code).json(data);
@@ -21,4 +26,4 @@ const addCar = asyncHandler(async (req, res) => {
   res.status(code).json(data);
 });
 
-module.exports = { getCars, changeStatusCar, deleteCar, addCar };
+module.exports = { getCars, changeStatusCar, deleteCar, addCar, getCar };
