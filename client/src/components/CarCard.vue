@@ -22,11 +22,11 @@
       <p v-else>Price: <b>N/A</b></p>
     </div>
 
-    <v-card-actions class="mb-3 d-flex justify-end" v-if="c.status === 'available'">
-      <v-btn class="red" color="white--text">
+    <v-card-actions class="mb-3 d-flex justify-end">
+      <v-btn class="red" color="white--text" @click="delButton(c.car_id)">
         Delete
       </v-btn>
-      <v-btn class="purple" color="white--text" :to="`/details/${c.id}`">
+      <v-btn class="purple" color="white--text" :to="`/details/${c.car_id}`" v-if="c.status === 'available'">
         Details
       </v-btn>
     </v-card-actions>
@@ -38,6 +38,11 @@ export default {
   props: {
     c: {
       type: Object,
+    },
+  },
+  methods: {
+    delButton(id) {
+      this.$emit('delButton', id);
     },
   },
 };

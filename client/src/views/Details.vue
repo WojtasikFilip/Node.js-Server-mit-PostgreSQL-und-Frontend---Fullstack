@@ -89,7 +89,7 @@ export default {
     },
     async orderCar() {
       await axios({
-        url: 'http://127.0.0.1:3000/cars/' + this.singleCar.id,
+        url: 'http://127.0.0.1:3000/cars/' + this.singleCar.car_id,
         method: 'PATCH',
         contentType: 'application/json',
         data: {

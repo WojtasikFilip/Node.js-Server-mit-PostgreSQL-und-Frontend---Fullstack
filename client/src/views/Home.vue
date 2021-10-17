@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CarCards :cars="cars" :carRefresh="getCars()" />
+    <CarCards :cars="cars" :carRefresh="getCars" @delButton="delButton" />
   </div>
 </template>
 
@@ -24,6 +24,14 @@ export default {
         method: 'GET',
       });
       this.cars = data;
+    },
+    async delButton(id) {
+      await axios({
+        url: 'http://localhost:3000/cars/' + id,
+        method: 'DELETE',
+      });
+      console.log(id);
+      this.getCars();
     },
   },
 };

@@ -1,7 +1,9 @@
 const db = require('../db/index');
 
 async function getCars() {
-  const { rows } = await db.query('select * from cars join owner o on cars.owner = o.id');
+  const { rows } = await db.query(
+    'select cars.id as car_id,title,image,status,price,miles,year_of_make,description,owner,first_name,last_name from cars join owner o on cars.owner = o.id',
+  );
   return {
     data: rows,
     code: 200,
@@ -9,9 +11,10 @@ async function getCars() {
 }
 
 async function getCar(id) {
-  const { rows } = await db.query('SELECT * from cars join owner o on cars.owner = o.id where cars.id = $1 ', [
-    id,
-  ]);
+  const { rows } = await db.query(
+    'SELECT cars.id as car_id,title,image,status,price,miles,year_of_make,description,owner,first_name,last_name from cars join owner o on cars.owner = o.id where cars.id = $1 ',
+    [id],
+  );
   if (rows.length === 0) {
     return {
       data: `Car with the id ${id} was not found.`,
@@ -88,7 +91,7 @@ async function addCar(c) {
 
     await db.query(
       'INSERT into cars (id,title,image,status,price,miles,year_of_make,description,owner) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',
-      [maxID, c.title, c.image, c.status, c.price, c.miles, c.year_of_make, c.description, ownerID],
+      [maxID, c.title, c.image, c.status, c.price, c.miles, c.yearOfMake, c.description, ownerID],
     );
     return {
       data: `Car with the id ${maxID} was added.`,

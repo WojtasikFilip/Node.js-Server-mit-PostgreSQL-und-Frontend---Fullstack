@@ -1,16 +1,16 @@
 GET http://127.0.0.1:3000/cars
 ###
-GET http://127.0.0.1:3000/cars/2
+GET http://127.0.0.1:3000/cars/4
 ###
-PATCH http://127.0.0.1:3000/cars/12
+PATCH http://127.0.0.1:3000/cars/4
 Content-Type: application/json
 
 {
     "title":"Filip war hier",
-    "status":"sold"
+    "status":"available"
 }
 ###
-DELETE http://127.0.0.1:3000/cars/33
+DELETE http://127.0.0.1:3000/cars/4
 ###
 POST http://127.0.0.1:3000/cars
 Content-Type: application/json
@@ -19,12 +19,12 @@ Content-Type: application/json
 "title": "Rare Oldtimer",
 "status": "available",
 "price": "52300",
-"image": "http://localhost:3000/images/car10.png",
+"image": "http://localhost:3000/images/car5.png",
 "miles": 189921,
 "yearOfMake": 1978,
 "owner": {
-"firstName": "test",
-"lastName": "test"
+"firstName": "Filip",
+"lastName": "Wojtasik"
 },
 "description": "Excellent condition. A trip back in time!"
 }
